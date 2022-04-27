@@ -42,10 +42,15 @@ $("#naver_id_login_anchor img").attr("src", "/Content/Images/naver.svg");
         naver_id_login.get_naver_userprofile("naverSignInCallback()");
         // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
         function naverSignInCallback() {
-            let jsonData = {
+             let jsonData = {
                 email: naver_id_login.getProfileData('email'),
                 id: naver_id_login.getProfileData('id'),
-                name: naver_id_login.getProfileData('age')
+                name: naver_id_login.getProfileData('name'),
+                //로그인시 가져올 수 있는 정보중, 휴대전화와 출생년도는 네이버에서 제공하는 Js sdk를 받아서 적용해야 한다.
+                //mobile: naver_id_login.getProfileData('mobile'),
+                birthday : naver_id_login.getProfileData('birthday'),
+                //birth : naver_id_login.getProfileData('birth'),
+                gender : naver_id_login.getProfileData('gender')
             };
             //네이버에서 받아온 정보를 저정하기 위한 함수
             $.post("/SNS/Naver/Regist", jsonData, function (rst) {
@@ -64,4 +69,26 @@ $("#naver_id_login_anchor img").attr("src", "/Content/Images/naver.svg");
         }
     </script>
 }
+```
+
+
+### 컨트롤러
+```C#
+        [HttpPost]
+        [Route("SNS/Naver/Regist")]
+        public JsonResult NaverRegist(string id, string email, string name = "")
+        {
+            var result = new ReturnValue();
+
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                result = this.Db.SNSNaverJoin(id, email, name);
+            }
+            else
+            {
+                result.Error("잘못된 요청입니다.");
+            }
+
+            return Json(result);
+        }
 ```
