@@ -1,11 +1,11 @@
 # snsLoginTest
 sns Test 관련 정리 코드
 
-#네이버 로그인 api
+# 네이버 로그인 api
 
-###테스트 환경은 로컬에서 was 서버로 진행하였다.
-###따로 스크립트를 만들어서 값을 index(main화면)으로 가져온다.
-###로그인 팝업 찾을 뛰울 div
+### 테스트 환경은 로컬에서 was 서버로 진행하였다.
+### 따로 스크립트를 만들어서 값을 index(main화면)으로 가져온다.
+### 로그인 팝업 찾을 뛰울 div
 ```C#
 <div id="naver_id_login">네이버</div>
 
@@ -25,7 +25,7 @@ $("#naver_id_login_anchor img").attr("src", "/Content/Images/naver.svg");
 
 
 
-###CallBack을 처리할 페이지
+### CallBack을 처리할 페이지
 ```C#
 @{
     Layout = Global.Layout.Base;
