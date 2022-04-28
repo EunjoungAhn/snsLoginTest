@@ -52,19 +52,19 @@ $("#naver_id_login_anchor img").attr("src", "/Content/Images/naver.svg");
                 //birth : naver_id_login.getProfileData('birth'),
                 gender : naver_id_login.getProfileData('gender')
             };
-            //네이버에서 받아온 정보를 저정하기 위한 함수
-            $.post("/SNS/Naver/Regist", jsonData, function (rst) {
-                console.log(rst);
-                if (rst.Check) {
-                    opener.snsLogin(rst.Code, function (r) {
-                        opener.location.href = "/";
-                        window.close();
-                    });
-                } else {
-                    RedAlert(rst.Message);
-                }
-            });
-
+            console.log("jsonData:", jsonData);
+           //네이버 로그인 버튼 클릭시 회원 여부 확인
+        $.post("/SNS/Naver/ID/Check", jsonData, function (rst) {
+            console.log(rst);
+            if (rst.check) {
+                opener.location.href = "/";
+                window.close();
+            } else {
+                alert("회원이 아닙니다. 회원가입을 진행해 주세요.");
+                window.close();
+                opener.location.href = `/Member/join?email=${jsonData.email}&name=${jsonData.name}&id=${jsonData.id}`;
+            }
+        });
             
         }
     </script>
