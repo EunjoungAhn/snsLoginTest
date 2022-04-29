@@ -92,3 +92,79 @@ $("#naver_id_login_anchor img").attr("src", "/Content/Images/naver.svg");
             return Json(result);
         }
 ```
+
+# 카카오 로그인 api
+
+### 로그인 버튼 추가 및 버튼 모양 설정
+```C#
+<a href="javascript:fnLoginFromKakao();"><img src="/Content/Images/kakaotalk.svg" alt="카카오톡 로그인" /></a>
+```
+
+### api 사용을 위한 sdk 스크립트 추가
+```C#
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+```
+
+### 스크립트
+```C#
+
+var kakaoKey = '카카오 api key';
+var kakaoAuth = null;
+
+$(document).ready(function () {
+    Kakao.init(kakaoKey); //발급받은 키 중 javascript키를 사용해준다.
+});
+//카카오로그인
+function fnLoginFromKakao() {
+    Kakao.Auth.login({
+        success: function (authObj) {
+            kakaoAuth = authObj;
+            fnKakaoUserInfoGet();
+        },
+        fail: function (err) {
+            alert(JSON.stringify(err));
+        },
+    });
+};
+//카카오 로그인 사용자 정보 가져와서 회원 여부 확인 후, 아니면 가입화면으로
+function fnKakaoUserInfoGet() {
+    Kakao.API.request({
+        url: '/v2/user/me',
+        success: function (res) {
+            let jsonData = { UserID: res.id, Email: res.kakao_account.email, UserName: res.kakao_account.profile.nickname };
+            console.log("jsonData", jsonData)
+            $.post("/SNS/Kakao/ID/Check", jsonData, function (rst) {
+                console.log("rst", rst)
+                if (rst.check) {
+                    location.href = "/";
+                } else {
+                    alert("회원이 아닙니다. 회원가입을 진행해 주세요.");
+                    location.href = `/Member/join?email=${jsonData.Email}&name=${jsonData.UserName}&id=${jsonData.UserID}&joinType=Kakao`;
+                }
+            });
+        },
+        fail: function (error) {
+            alert(
+                'login success, but failed to request user information: ' +
+                JSON.stringify(error)
+            );
+        },
+    });
+};
+```
+
+# 구글 로그인 api
+### 로그인 버튼 활성화를 위한 meta 설정
+```C#
+<meta name="google-signin-client_id" content="OAuth2.0 클라이언트 ID">
+```
+
+### 로그인 버튼
+```C#
+<div class="g-signin2"></div>
+```
+
+### api 사용을 위한 sdk 스크립트 추가
+```C#
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+```
