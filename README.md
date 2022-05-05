@@ -173,3 +173,9 @@ function fnKakaoUserInfoGet() {
 아래의 에러는 Google Auth API 초기화 실패(클라이언트에 타사 쿠키가 활성화되지 않은 경우 발생)하는 것이다.
 error: 'idpiframe_initialization_failed', details: 'R'
 
+### 이유&  해결방안
+
+개인 정보 보호를 위해 "타사 쿠키 및 사이트 데이터 차단"을 설정한다. 
+나의 경우 사용자가 타사 세션 스토리지를 사용하지 않도록 설정되어 있었기 때문에 클라이언트가 작동하지 않은 것이었다.
+[해결방안]
+Google Chrome 브라우저 설정 > 개인정보 및 보안 > 쿠키 및 기타 사이트 데이터
