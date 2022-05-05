@@ -168,3 +168,8 @@ function fnKakaoUserInfoGet() {
 ```C#
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 ```
+
+### 로그인 버튼 에러
+아래의 에러는 Google Auth API 초기화 실패(클라이언트에 타사 쿠키가 활성화되지 않은 경우 발생)하는 것이다.
+error: 'idpiframe_initialization_failed', details: 'R'
+
