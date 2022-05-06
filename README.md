@@ -179,3 +179,36 @@ error: 'idpiframe_initialization_failed', details: 'R'
 나의 경우 사용자가 타사 세션 스토리지를 사용하지 않도록 설정되어 있었기 때문에 클라이언트가 작동하지 않은 것이었다.
 [해결방안]
 Google Chrome 브라우저 설정 > 개인정보 및 보안 > 쿠키 및 기타 사이트 데이터
+
+### 
+```C#
+function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    /*
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+    */
+
+    let jsonData = { UserID: profile.getId(), Email: profile.getEmail(), UserName: profile.getName() };
+    console.log("jsonData", jsonData)
+    $.post("/SNS/google/ID/Check", jsonData, function (rst) {
+        console.log("rst", rst)
+        if (rst.check) {
+            location.href = "/";
+        } else {
+            alert("LSK 회원이 아닙니다. 회원가입을 진행해 주세요.");
+            location.href = `/Member/join?email=${jsonData.Email}&name=${jsonData.UserName}&id=${jsonData.UserID}&joinType=Google`;
+        }
+    });
+};
+
+function onFailure(error) {
+    console.log(error);
+}
+```
