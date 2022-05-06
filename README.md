@@ -213,4 +213,21 @@ function onSignIn(googleUser) {
 function onFailure(error) {
     console.log(error);
 }
+
+//구글 버튼 커스톰 함수 
+function renderButton() {
+    gapi.signin2.render('googleLogin', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 40,
+        'longtitle': true,
+        'onsuccess': onSignIn,
+        'onfailure': onFailure
+    });
+}
+```
+
+### 커스텀 버튼 함수를 사용할때는 api 뒤에 ? 와 함께 해당 함수명을 적으면 됩니다.
+```C#
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 ```
