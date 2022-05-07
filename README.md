@@ -231,3 +231,10 @@ function renderButton() {
 ```C#
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 ```
+
+### 참고로! 로그인 버튼별 디자인 레퍼런스가 존재함으로 테스트용 디자인은 상관 없지만 </br>
+### 실서버에서 사용할 버튼을 승인 받으려면 디자인 변경 가능을 확인해야 합니다.
+Ex) 구글의 경우가 가장 까다로우며, 구글이 제공하는 디자인 버튼을 사용하는 것이 가장 편합니다.
+</br>
+각 로그인 별 디자인 레퍼런스가 잘 정리되어 있는 사이트: </br>
+https://ditoday.com/%EA%B0%84%ED%8E%B8-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%A0%EA%B9%8C-_-ux-%EB%94%94%EC%9E%90%EC%9D%B8%EA%B3%BC-%EA%B0%9C%EB%B0%9C/
