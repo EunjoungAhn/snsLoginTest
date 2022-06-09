@@ -3,12 +3,22 @@ sns Test 관련 정리 코드
 
 # 네이버 로그인 api
 
-### 테스트 환경은 로컬에서 was 서버로 진행하였다.
-### 따로 스크립트를 만들어서 값을 index(main화면)으로 가져온다.
+테스트 환경은 로컬에서 was 서버로 진행하였다.
+따로 스크립트를 만들어서 값을 index(main화면)으로 가져온다.
+
+<br/>
+네이버 개발자 사이트에 테스트 및 등록할 애플리케이션을 등록해서, <br/>
+클라이언트 ID를 만들어야 한다. https://developers.naver.com/ <br/>
+테스트가 다 끝나고 검수할때는 실제 운영하는 서버로 등록해야 한다.
+
 ### 로그인 팝업 찾을 뛰울 div
 ```C#
 <div id="naver_id_login">네이버</div>
+```
 
+### 스크립트 및 api 사용을 위한 sdk 스크립트 추가
+```C#
+<script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"></script>
 <script src="/Scripts/sns/naver.js"></script>
 ```
 
