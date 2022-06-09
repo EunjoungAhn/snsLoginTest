@@ -24,10 +24,11 @@ sns Test 관련 정리 코드
 
 ### Scripts/sns/naver.js
 ```C#
-var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "http://localhost:27818/SNS/Naver/Callback");
+//naver_id_login 콜백을 설정할때, 개발센터에서 콜백 받을 주소를 적어주어야 정상 작동한다.
+var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "http://localhost:27818/SNS/Naver/Callback");//콜백 처리할 주소
 var state = naver_id_login.getUniqState();
 naver_id_login.setButton("white", 1, 40);
-naver_id_login.setDomain("http://localhost:27818");
+naver_id_login.setDomain("http://localhost:27818");//로그인 팝업창을 열 주소
 naver_id_login.setState(state);
 naver_id_login.setPopup();
 naver_id_login.init_naver_id_login();
