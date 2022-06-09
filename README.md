@@ -12,6 +12,7 @@ sns Test 관련 정리 코드
 <script src="/Scripts/sns/naver.js"></script>
 ```
 
+### Scripts/sns/naver.js
 ```C#
 var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "http://localhost:27818/SNS/Naver/Callback");
 var state = naver_id_login.getUniqState();
