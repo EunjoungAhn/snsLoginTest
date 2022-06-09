@@ -34,6 +34,14 @@ naver_id_login.init_naver_id_login();
 $("#naver_id_login_anchor img").attr("src", "/Content/Images/naver.svg");
 ```
 
+### 네이버 api callBack을 받기 위한 뷰
+```C#
+[Route("SNS/Naver/Callback")]
+public ActionResult NaverCallback()
+{
+    return View();
+}
+```
 
 
 ### CallBack을 처리할 페이지
