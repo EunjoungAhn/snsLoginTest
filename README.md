@@ -25,6 +25,7 @@ sns Test 관련 정리 코드
 ### Scripts/sns/naver.js
 ```C#
 //naver_id_login 콜백을 설정할때, 개발센터에서 콜백 받을 주소를 적어주어야 정상 작동한다.
+//IIS 주소와 로컬 디버깅에 따라 콜백 받는 주소가 다르면, 네이버 개발센터에서 추가해주어야 한다.
 var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "http://localhost:27818/SNS/Naver/Callback");//콜백 처리할 주소
 var state = naver_id_login.getUniqState();
 naver_id_login.setButton("white", 1, 40);
