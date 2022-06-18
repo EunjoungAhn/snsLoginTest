@@ -116,6 +116,14 @@ public ActionResult NaverCallback()
 
 # 카카오 로그인 api
 
+카카오 개발자 사이트: https://developers.kakao.com/ 에서 상단 메뉴에서 '내 애플리케이션'을 등록,
+<br/>
+아래의 사진과 같이 '플랫폼'에서 테스트할 'Web 도메인'을 등록(실서버 검수 때는 실서버 주소로 변경 혹은 도메인 추가 등록이 가능하다.)
+<br/>
+좌측 '카카오 로그인' 메뉴에서 로그인 on(활성화)을 시켜주어야 한다.
+<br/>
+![image](https://user-images.githubusercontent.com/34737952/174439373-dfc4d2f8-6f85-4afb-b74b-5381e9cb9ba8.png)
+
 ### 로그인 버튼 추가 및 버튼 모양 설정
 ```C#
 <a href="javascript:fnLoginFromKakao();"><img src="/Content/Images/kakaotalk.svg" alt="카카오톡 로그인" /></a>
