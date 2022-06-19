@@ -183,6 +183,13 @@ function fnKakaoUserInfoGet() {
 ```
 
 # 구글 로그인 api
+## 구글에 서비스 등록하기
+<br/>
+https://console.cloud.google.com/apis/
+<br/>
+구글 로그인하고 왼쪽 위에 프로젝트 선택을 누른 후 새 프로젝트를 생성한다.메뉴에서 API 및 서비스 -> 사용자 인증 정보OAuth 동의 화면을 작성 후 저장.그 다음 옆에 사용자 인증 정보로 이동하여 사용자 인증 정보 만들기 -> OAuth 클라이언트 ID 선택
+<br/>
+
 ### 로그인 버튼 활성화를 위한 meta 설정
 ```C#
 <meta name="google-signin-client_id" content="OAuth2.0 클라이언트 ID">
